@@ -12,7 +12,7 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 $ polymer serve
 ```
 
-##Demo
+## Demo
 
 <!--
 ```

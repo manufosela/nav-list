@@ -1,11 +1,18 @@
 {
   "name": "@manufosela/nav-list",
-  "version": "1.0.1",
+  "description": "Polymer 3.0 webcomponent to draw a horizontal navigation number list",
+  "version": "1.0.2",
   "main": "nav-list.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/manufosela/nav-list"
   },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manufosela/nav-list/issues"
+  },
+  "homepage": "https://github.com/manufosela/nav-list",
   "dependencies": {
     "@polymer/polymer": "^3.0.0"
   },

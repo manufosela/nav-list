@@ -1,4 +1,4 @@
-# \<select-items\>
+# \<nav-list\>
 
 
 
@@ -12,10 +12,22 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 $ polymer serve
 ```
 
-## Running Tests
+##Demo
 
+<!--
 ```
-$ polymer test
+<custom-element-demo>
+  <template>
+    <link rel="import" href="nav-list.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
 ```
+-->
+```html
+<h3>Basic nav-list demo</h3>
+<nav-list></nav-list>
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+<h3>With attributes nav-list demo</h3>
+<nav-list value="7" start="5" end="10"></nav-list>
+```

@@ -1,16 +1,53 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import {afterNextRender} from '@polymer/polymer/lib/utils/render-status.js';
+import { LitElement, html } from '@polymer/lit-element';
+import {afterNextRender, beforeNextRender} from '@polymer/polymer/lib/utils/render-status.js';
 
 /**
  * `nav-list`
  * 
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class NavList extends PolymerElement {
-  static get template() {
+class NavList extends LitElement {
+  static get properties() {
+    return {
+      list: { type: String },
+      listValues: { type: Array },
+      value: { type: String },
+      title: { type: String },
+    }
+  }
+
+  constructor() {
+    super();
+    beforeNextRender(this, function() {
+      this.listValues = this.list.split(",");
+    });
+    afterNextRender(this, function() {
+      if (this.value) {
+        this.renderRoot.querySelector("[id=navlist-item__"+this.value+"]").checked = true;
+      }
+    });
+  
+    this.list = "0,1,2,3,4,5";
+    this.listValues = this.list.split(",");
+    this.value = null;
+    this.title='TITLE';
+  }
+
+  _setValue(val) {
+    this.value = val;
+  }
+
+  _getListValues() {
+    return this.listValues.map(val => html`
+    <label class="navlist-labels__item">
+      <input type="radio" class="navlist-labels__checkbox" name="type1" id="navlist-item__${val}">
+      <span class="navlist-labels__txt" @click="${() => this._setValue(val)}">&nbsp;${val}&nbsp;</span>
+    </label>`);
+  }
+
+  render() {
     return html`
       <style>
         @media screen and (max-width: 767px) {
@@ -63,58 +100,12 @@ class NavList extends PolymerElement {
         }
       </style>
       <div class="navlist-labels">
-        <div class="navlist-labels__title">[[title]]</div>
+        <div class="navlist-labels__title">${this.title}</div>
         <div class="navlist-labels__group">
-          <dom-repeat items="{{myItems}}">
-            <template>
-              <label class="navlist-labels__item">    
-                <input type="radio" class="navlist-labels__checkbox" name="type1" id="navlist-item__{{item}}">
-                <span class="navlist-labels__txt">&nbsp;{{item}}&nbsp;</span>
-              </label>
-            </template>
-          </dom-repeat>
+          ${this._getListValues()}
         </div>
       </div>
     `;
-  }
-  static get properties() {
-    return {
-      myItems: {
-        type: Array,
-        computed: "getArray(start,end)",
-      },
-      start: {
-        type: Number,
-        value: 1,
-      },
-      end: {
-        type: Number,
-        value: 10,
-      },
-      value: {
-        type: Number,
-        value: null,
-      },
-      title:{
-        type: String,
-        value: 'TITLE',
-      },
-    };
-  }
-
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      if (this.value) {
-        this.root.querySelector("[id=navlist-item__"+this.value+"]").checked = true;
-      }
-    });
-  }
-
-  getArray() {
-    let a = this.start;
-    let b = this.end;
-    return [...Array(b-a+1).keys()].map(v=>v+a);
   }
 }
 

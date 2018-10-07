@@ -1,7 +1,7 @@
 {
   "name": "@manufosela/nav-list",
-  "description": "Polymer 3.0 webcomponent to draw a horizontal navigation number list",
-  "version": "2.0.1",
+  "description": "Polymer 3.0 webcomponent with lit-html to draw a horizontal navigation list",
+  "version": "2.1.0",
   "main": "nav-list.js",
   "repository": {
     "type": "git",
@@ -9,6 +9,10 @@
   },
   "author": "manufosela",
   "license": "MIT",
+  "keywords": [
+    "webcomponent",
+    "lit-element"
+  ],
   "bugs": {
     "url": "https://github.com/manufosela/nav-list/issues"
   },

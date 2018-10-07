@@ -1,5 +1,5 @@
-# \<nav-list\>
-
+# \<nav-list\> [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@manufosela/nav-list)
+Polymer 3.0 webcomponent with lit-html to draw a horizontal navigation list
 
 
 ## Install the Polymer-CLI
@@ -18,6 +18,7 @@ $ polymer serve
 ```
 <custom-element-demo>
   <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="nav-list.html">
     <next-code-block></next-code-block>
   </template>

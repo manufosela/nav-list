@@ -25,9 +25,12 @@ $ polymer serve
 ```
 -->
 ```html
-<h3>Basic nav-list demo</h3>
+<h3>Default nav-list demo</h3>
 <nav-list></nav-list>
 
 <h3>With attributes nav-list demo</h3>
-<nav-list value="7" start="5" end="10"></nav-list>
+<nav-list value="7" list="5,6,7,8,9,10"></nav-list>
+
+<h3>With attributes nav-list demo</h3>
+<nav-list value="5&ndash;10" list="&lt;3,3&ndash;5,5&ndash;10,&gt;10"></nav-list>
 ```

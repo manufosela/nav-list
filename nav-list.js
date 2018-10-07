@@ -1,5 +1,5 @@
-import { LitElement, html } from '@polymer/lit-element';
-import {afterNextRender, beforeNextRender} from '@polymer/polymer/lib/utils/render-status.js';
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js';
+import {afterNextRender, beforeNextRender} from '/node_modules/@polymer/polymer/lib/utils/render-status.js';
 
 /**
  * `nav-list`
@@ -15,6 +15,7 @@ class NavList extends LitElement {
       listValues: { type: Array },
       value: { type: String },
       title: { type: String },
+      fixed: { type: Boolean },
     }
   }
 
@@ -33,16 +34,22 @@ class NavList extends LitElement {
     this.listValues = this.list.split(",");
     this.value = null;
     this.title='TITLE';
+    this.fixed = false;
   }
 
   _setValue(val) {
     this.value = val;
   }
 
+  _getInput(val) {
+    let inputStr = (!this.fixed)?html`<input type="radio" class="navlist-labels__checkbox" name="type1" id="navlist-item__${val}">`:html`<input type="radio" class="navlist-labels__checkbox" name="type1" id="navlist-item__${val}" disabled>`;
+    return inputStr;
+  }
+
   _getListValues() {
     return this.listValues.map(val => html`
     <label class="navlist-labels__item">
-      <input type="radio" class="navlist-labels__checkbox" name="type1" id="navlist-item__${val}">
+      ${this._getInput(val)}
       <span class="navlist-labels__txt" @click="${() => this._setValue(val)}">&nbsp;${val}&nbsp;</span>
     </label>`);
   }

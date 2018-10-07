@@ -22,7 +22,7 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic nav-list demo</h3>
+      <h3>Default nav-list demo</h3>
       <demo-snippet>
         <template>
           <nav-list></nav-list>
@@ -32,10 +32,16 @@
       <h3>With attributes nav-list demo</h3>
       <demo-snippet>
         <template>
-          <nav-list value="7" start="5" end="10"></nav-list>
+          <nav-list title="NavList 2" value="7" list="5,6,7,8,9,10"></nav-list>
         </template>
       </demo-snippet>
 
+      <h3>With attributes nav-list demo</h3>
+      <demo-snippet>
+        <template>
+          <nav-list title="NavList 3" value="5&ndash;10" list="&lt;3,3&ndash;5,5&ndash;10,&gt;10"></nav-list>
+        </template>
+      </demo-snippet>
 
     </div>
   </body>

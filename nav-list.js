@@ -26,7 +26,7 @@ class NavList extends LitElement {
     });
     afterNextRender(this, function() {
       if (this.value) {
-        this.renderRoot.querySelector("[id=navlist-item__"+this.value+"]").checked = true;
+        this.renderRoot.querySelector("[id='navlist-item__"+this.value+"']").checked = true;
       }
     });
   

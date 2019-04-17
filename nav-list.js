@@ -1,5 +1,4 @@
 import { LitElement, html, css } from '/node_modules/lit-element/lit-element.js';
-//import {afterNextRender, beforeNextRender} from '/node_modules/lib/utils/render-status.js';
 
 /**
  * `nav-list`

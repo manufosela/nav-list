@@ -100,6 +100,7 @@ class NavList extends LitElement {
 
   _setValue(val) {
     this.value = val;
+    this.dispatchEvent(new CustomEvent('navlist-changed', { detail: val }));
   }
 
   _getInput(val) {

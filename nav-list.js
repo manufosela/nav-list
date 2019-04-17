@@ -108,11 +108,16 @@ class NavList extends LitElement {
     return inputStr;
   }
 
+  _getSpan(val) {
+    let spanStr = (!this.fixed)?html`<span class="navlist-labels__txt" @click="${() => this._setValue(val)}">&nbsp;${val}&nbsp;</span>`:html`<span class="navlist-labels__txt">&nbsp;${val}&nbsp;</span>`
+    return spanStr
+  }
+
   _getListValues() {
     return this.listValues.map(val => html`
     <label class="navlist-labels__item">
       ${this._getInput(val)}
-      <span class="navlist-labels__txt" @click="${() => this._setValue(val)}">&nbsp;${val}&nbsp;</span>
+      ${this._getSpan(val)}
     </label>`);
   }
 

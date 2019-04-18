@@ -1,7 +1,7 @@
 {
   "name": "@manufosela/nav-list",
   "description": "Polymer 3.0 webcomponent with lit-html to draw a horizontal navigation list",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "main": "nav-list.js",
   "repository": {
     "type": "git",

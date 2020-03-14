@@ -22,6 +22,11 @@ class NavList extends LitElement {
   }
 
   static get styles() {
+    /* CSS CUSTOM VARS
+      --width-list-element: auto;
+      --height-list-element: auto;
+      --border-radius-element: 10px;
+    */
     return css`
       @media screen and (max-width: 767px) {
         .navlist-labels {
@@ -67,9 +72,17 @@ class NavList extends LitElement {
         font-size: 14px;
         padding: 10px 20px;
         padding-left: 0;
-        border-radius: 50px;
+        border-radius: var(--border-radius-element, 50px);
         transition: all 0.3s;
         letter-spacing: 2px;
+        width: var(--width-list-element, 'auto');
+        height: var(--height-list-element, 'auto');
+        position: relative;
+        top: var(calc(-1 * --height-list-element / 2), 0);
+        left: var(calc(-1 * --width-list-element / 2), 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     `;
   }

@@ -35,6 +35,8 @@ class NavList extends LitElement {
       --border-bottom-selected-element: 2px solid #cc3743;
       --border-left-selected-element: 2px solid #cc3743;
       --border-right-selected-element: 2px solid #cc3743;
+      --padding-list-element: 10px 20px;
+      --padding-selected-element: 10px 13px;
     */
     return css`
       @media screen and (max-width: 767px) {
@@ -51,7 +53,7 @@ class NavList extends LitElement {
         border-bottom: var(--border-bottom-selected-element, 2px solid #cc3743);
         border-left: var(--border-left-selected-element, 2px solid #cc3743);
         border-right: var(--border-right-selected-element, 2px solid #cc3743);
-        padding: 10px 13px;
+        padding: var(--padding-selected-element, 10px 13px);
       }
       .navlist-labels__title {
         font-family: "Dosis", sans-serif;
@@ -86,7 +88,7 @@ class NavList extends LitElement {
         border-right: var(--border-right-list-element, '2px solid transparent');
         border-left: var(--border-left-list-element, '2px solid transparent');
         font-size: 14px;
-        padding: 10px 20px;
+        padding: var(--padding-list-element, 10px 20px);
         border-radius: var(--border-radius-element, 0);
         transition: all 0.3s;
         letter-spacing: 2px;

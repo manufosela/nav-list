@@ -4,7 +4,7 @@ import { LitElement, html, css } from 'lit-element';
  * `nav-list`
  * Nav List
  *
- * @customElement
+ * @nav-list
  * @polymer
  * @litElement
  * @demo demo/index.html
@@ -17,10 +17,11 @@ class NavList extends LitElement {
       value: { type: String },
       title: { type: String },
       fixed: { type: Boolean },
-    }
+      listenEvents: { type: Boolean, attribute: 'listen-events' }
+    };
   }
 
-  static get styles(){
+  static get styles() {
     return css`
       @media screen and (max-width: 767px) {
         .navlist-labels {
@@ -75,41 +76,74 @@ class NavList extends LitElement {
 
   constructor() {
     super();
-    this.list = "0,1,2,3,4,5";
-    this.listValues = this.list.split(",");
+    this.list = '0,1,2,3,4,5';
+    this.listValues = this.list.split(',');
     this.value = null;
-    this.title='TITLE';
+    this.title = 'TITLE';
     this.fixed = false;
+    this.listenEvents = false;
+  }
+
+  _getNextVal() {
+    const pos = this.listValues.indexOf(this.value);
+    if (pos < this.listValues.length - 1) {
+      this.value = this.listValues[pos + 1];
+    }
+  }
+
+  _getLastVal() {
+    const pos = this.listValues.indexOf(this.value);
+    if (pos > 0) {
+      this.value = this.listValues[pos - 1];
+    }
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.listValues = this.list.split(",");
+    this.listValues = this.list.split(',');
+    if (this.listenEvents) {
+      document.addEventListener('navlist-next', (ev) => {
+        this._getNextVal();
+      });
+      document.addEventListener('navlist-last', (ev) => {
+        this._getLastVal();
+      });
+    }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
+    if (this.listenEvents) {
+      document.removeEventListener('navlist-next', (ev) => {
+        this._getNextVal();
+      });
+      document.removeEventListener('navlist-last', (ev) => {
+        this._getLastVal();
+      });
+    }
   }
 
   updated() {
     if (this.value) {
-      this.renderRoot.querySelector("[id='navlist-item__"+this.value+"']").checked = true;
+      this.renderRoot.querySelector('[id=\'navlist-item__' + this.value + '\']').checked = true;
     }
   }
 
   _setValue(val) {
     this.value = val;
-    this.dispatchEvent(new CustomEvent('navlist-changed', { detail: val }));
+    const id = (this.id) ? this.id : 'no-id';
+    const changeValEvent = new CustomEvent('navlist-changed', { 'detail': { 'value': this.value, 'pos': this.listValues.indexOf(this.value), id: id}});
+    document.dispatchEvent(changeValEvent);
   }
 
   _getInput(val) {
-    let inputStr = (!this.fixed)?html`<input type="radio" class="navlist-labels__checkbox" name="type1" id="navlist-item__${val}">`:html`<input type="radio" class="navlist-labels__checkbox" name="type1" id="navlist-item__${val}" disabled>`;
+    let inputStr = (!this.fixed) ? html`<input type="radio" class="navlist-labels__checkbox" name="type1" id="navlist-item__${val}">` : html`<input type="radio" class="navlist-labels__checkbox" name="type1" id="navlist-item__${val}" disabled>`;
     return inputStr;
   }
 
   _getSpan(val) {
-    let spanStr = (!this.fixed)?html`<span class="navlist-labels__txt" @click="${() => this._setValue(val)}">&nbsp;${val}&nbsp;</span>`:html`<span class="navlist-labels__txt">&nbsp;${val}&nbsp;</span>`
-    return spanStr
+    let spanStr = (!this.fixed) ? html`<span class="navlist-labels__txt" @click="${() => this._setValue(val)}">&nbsp;${val}&nbsp;</span>` : html`<span class="navlist-labels__txt">&nbsp;${val}&nbsp;</span>`
+    return spanStr;
   }
 
   _getListValues() {

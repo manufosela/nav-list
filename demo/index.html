@@ -17,11 +17,27 @@
       <h3>nav-list demo3: With attributes </h3>
       <p>Element list value: <span id="yourNavlistValue"></span></p>
       <nav-list id="demo3" title="NavList 3" value="5&ndash;10" list="&lt;3,3&ndash;5,5&ndash;10,&gt;10"></nav-list>
+      <hr>
+      <h3>nav-list demo2: With attributes and fixed and change with event</h3>
+      <nav-list id="demo4" title="NavList 2" value="7" list="5,6,7,8,9,10" fixed="true" listen-events="true"></nav-list>
+      <button onclick="goto('last')"><-last</button><button onclick="goto('next')">next-></button> 
       <script>
-        var el = document.querySelector("#demo3");
-        el.addEventListener('navlist-changed', function(ev) {
-          document.querySelector("#yourNavlistValue").innerText = ev.detail;
-        })
+        document.addEventListener('navlist-changed', function(ev) {
+          const detail = ev.detail;
+          if (detail.id === 'demo3') {
+            document.querySelector("#yourNavlistValue").innerText = detail.value;
+          }
+        });
+        const lastValEvent = new CustomEvent('navlist-last');
+        const nextValEvent = new CustomEvent('navlist-next');
+        function goto(dir) {
+          if (dir === 'last') {
+            document.dispatchEvent(lastValEvent);
+          }
+          if (dir === 'next') {
+            document.dispatchEvent(nextValEvent);
+          }
+        }
       </script>
     </div>
   </body>

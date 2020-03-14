@@ -6,20 +6,50 @@
     <title>nav-list demo</title>
     <script type="module" src="../nav-list.js"></script>
     <style>
+      .blocks {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .block {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+
+      .code {
+        padding: 20px;
+        color: #FFF;
+        background: #000;
+      }
+
+      .attributes {
+        padding-left: 20px;
+      }
+      .id { color:#AAA; }
+
+      firebase-autoform {
+        min-height: 700px;
+      }
+
       nav-list {
         --border-radius-selected: 10px;
       }
       #demo4 {
         --width-list-element: 80px;
         --height-list-element: 30px;
-        --border-top-selected-element: 8px solid transparent;
-        --border-bottom-selected-element: 8px solid #11FF00;
-        --border-left-selected-element: 8px solid transparent;
-        --border-right-selected-element: 8px solid transparent;
+        --border-top-selected-element: 5px solid transparent;
+        --border-bottom-selected-element: 5px solid #11FF00;
+        --border-left-selected-element: 5px solid transparent;
+        --border-right-selected-element: 5px solid transparent;
         --border-top-list-element: 5px solid transparent;
         --border-bottom-list-element: 5px solid gray;
         --border-left-list-element: 5px solid transparent;
         --border-right-list-element: 5px solid transparent;
+        --padding-list-element:10px 20px 0 20px;
+        --padding-selected-element:10px 20px 0 20px;
       }
     </style>
   </head>

@@ -25,7 +25,16 @@ class NavList extends LitElement {
     /* CSS CUSTOM VARS
       --width-list-element: auto;
       --height-list-element: auto;
-      --border-radius-element: 10px;
+      --border-radius-element: 0;
+      --border-radius-selected-element: 0;
+      --border-top-list-element: 2px solid transparent;
+      --border-bottom-list-element: 2px solid transparent;
+      --border-left-list-element: 2px solid transparent;
+      --border-right-list-element: 2px solid transparent;
+      --border-top-selected-element: 2px solid #cc3743;
+      --border-bottom-selected-element: 2px solid #cc3743;
+      --border-left-selected-element: 2px solid #cc3743;
+      --border-right-selected-element: 2px solid #cc3743;
     */
     return css`
       @media screen and (max-width: 767px) {
@@ -37,7 +46,11 @@ class NavList extends LitElement {
         display: none;
       }
       .navlist-labels__checkbox:checked + .navlist-labels__txt {
-        border-color: #cc3743;
+        border-radius: var(--border-radius-selected, 0);
+        border-top: var(--border-top-selected-element, 2px solid #cc3743);
+        border-bottom: var(--border-bottom-selected-element, 2px solid #cc3743);
+        border-left: var(--border-left-selected-element, 2px solid #cc3743);
+        border-right: var(--border-right-selected-element, 2px solid #cc3743);
         padding: 10px 13px;
       }
       .navlist-labels__title {
@@ -68,11 +81,13 @@ class NavList extends LitElement {
       }
       .navlist-labels__txt {
         display: block;
-        border: 2px solid transparent;
+        border-top: var(--border-top-list-element, '2px solid transparent');
+        border-bottom: var(--border-bottom-list-element, '2px solid transparent');
+        border-right: var(--border-right-list-element, '2px solid transparent');
+        border-left: var(--border-left-list-element, '2px solid transparent');
         font-size: 14px;
         padding: 10px 20px;
-        padding-left: 0;
-        border-radius: var(--border-radius-element, 50px);
+        border-radius: var(--border-radius-element, 0);
         transition: all 0.3s;
         letter-spacing: 2px;
         width: var(--width-list-element, 'auto');

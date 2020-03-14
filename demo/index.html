@@ -5,8 +5,55 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>nav-list demo</title>
     <script type="module" src="../nav-list.js"></script>
+    <style>
+      #demo4 {
+        --width-list-element: 30px;
+        --height-list-element: 30px;
+        --border-radius-element: 50%;
+      }
+    </style>
   </head>
   <body>
+    <h3>Basic nav-list Demo</h3>
+    <div class="blocks">
+      <pre class="block code">
+          <code>
+            &lt;nav-list&gt path="PATH_OF_FIREBASE" el-id="ELEMENT_ID";&lt;/nav-list&gt;
+          </code>
+        </pre>
+      <pre class="block attributes">
+          <section>
+            <h3>Attributes</h3>
+            <ul>
+              <li>list (separated comma list)</li>
+              <li>[title] (String)</li>
+              <li>[value] (String)</li>
+              <li>[fixed] (Boolean) (false by default)</li>
+              <li>[listen-events] (Boolean) (false by default)</li>
+            </ul>
+            <br/>
+          </section>
+          <section>
+            <h3>Listen Events</h3>
+            <ul>
+              <li>navlist-last<br></li>
+              <li>navlist-next<br></li>
+            </ul>
+            <h3>Dispatch Events</h3>
+            <ul>
+              <li>navlist-changed (when new value is set)</li>
+            </ul>
+          </section>
+          <section>
+            <h3>CSS vars</h3>
+            <ul>
+              <li>--width-list-element (default: auto)</li>
+              <li>--height-list-element (default: auto)</li>
+              <li>--border-radius-element (default: 10px)</li>
+            </ul>
+          </section>
+        </pre>
+    </div>
     <div class="vertical-section-container centered">
       <h3>nav-list demo: Default</h3>
       <nav-list></nav-list>
@@ -18,8 +65,8 @@
       <p>Element list value: <span id="yourNavlistValue"></span></p>
       <nav-list id="demo3" title="NavList 3" value="5&ndash;10" list="&lt;3,3&ndash;5,5&ndash;10,&gt;10"></nav-list>
       <hr>
-      <h3>nav-list demo2: With attributes and fixed and change with event</h3>
-      <nav-list id="demo4" title="NavList 2" value="7" list="5,6,7,8,9,10" fixed="true" listen-events="true"></nav-list>
+      <h3>nav-list demo4: With attributes and fixed and change with event</h3>
+      <nav-list id="demo4" title="NavList 4" value="7" list="5,6,7,8,9,10" fixed="true" listen-events="true"></nav-list>
       <button onclick="goto('last')"><-last</button><button onclick="goto('next')">next-></button> 
       <script>
         document.addEventListener('navlist-changed', function(ev) {

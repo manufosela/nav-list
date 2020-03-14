@@ -1,5 +1,9 @@
-# \<nav-list\> [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@manufosela/nav-list)
-Polymer 3.0 webcomponent with lit-html to draw a horizontal navigation list
+# \<nav-list\> [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@manufosela/nav-list) [![Published on npmjs.com](https://img.shields.io/badge/npmjs-package-orange)](https://www.npmjs.com/package/@manufosela/nav-list) [![License: Apache-2.0](https://img.shields.io/badge/license-apache2.0-green)](https://www.apache.org/licenses/LICENSE-2.0)
+
+
+/aur/license/:packageName
+
+Lit-Element webcomponent to draw a horizontal navigation list
 
 
 ## Demo
@@ -26,6 +30,33 @@ Polymer 3.0 webcomponent with lit-html to draw a horizontal navigation list
 
 <h3>With attributes nav-list demo</h3>
 <nav-list value="5&ndash;10" list="&lt;3,3&ndash;5,5&ndash;10,&gt;10"></nav-list>
+```
+
+## Attributes
+```code
+list (separated comma list)
+[title] (String)
+[value] (String)
+[fixed] (Boolean) (false by default)
+[listen-events] (Boolean) (false by default)
+```
+
+## Listen Events
+```code
+navlist-last
+navlist-next
+```
+
+## Dispatch Events
+```code
+navlist-changed (when new value is set)
+```
+
+## CSS vars
+```css
+--width-list-element (default: auto)
+--height-list-element (default: auto)
+--border-radius-element (default: 10px)
 ```
 
 ## Install the Polymer-CLI
@@ -57,4 +88,4 @@ Your application is already set up to be tested via [web-component-tester](https
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the Apache 2.0 License - see the [LICENSE](https://www.apache.org/licenses/LICENSE-2.0) file for details

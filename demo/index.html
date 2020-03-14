@@ -78,7 +78,10 @@
       <hr>
       <h3>nav-list demo4: With attributes and fixed and change with event</h3>
       <nav-list id="demo4" title="NavList 4" value="inicio" list="inicio, fase 1,fase 2,fase 3,fase 4,fase 5,fin" fixed="true" listen-events="true"></nav-list>
+      <br>
       <button onclick="goto('last')"><-last</button><button onclick="goto('next')">next-></button> 
+      <br>
+      <br>
       <script>
         document.addEventListener('navlist-changed', function(ev) {
           const detail = ev.detail;

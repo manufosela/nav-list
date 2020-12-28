@@ -1,14 +1,14 @@
 {
   "name": "@manufosela/nav-list",
   "description": "Lit-Element webcomponent with lit-html to draw a horizontal navigation list",
-  "version": "2.7.3",
+  "version": "2.8.0",
   "main": "nav-list.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/manufosela/nav-list"
   },
   "author": "manufosela",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "webcomponent",
     "lit-element"
@@ -18,18 +18,21 @@
   },
   "homepage": "https://github.com/manufosela/nav-list",
   "dependencies": {
-    "lit-element": "^2.1.0"
+    "lit-element": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/plugin-proposal-decorators": "^7.2.3",
+    "@webcomponents/webcomponentsjs": "^2.2.4",
+    "es-dev-server": "^1.46.0",
     "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.3.0",
     "rollup-plugin-node-resolve": "^4.0.0",
-    "@webcomponents/webcomponentsjs": "^2.2.4"
+    "rollup-plugin-terser": "^5.1.3"
   },
   "scripts": {
-    "build": "rm -rf build && mkdir build && rollup -c"
+    "build": "rm -rf dist && mkdir dist && rollup -c",
+    "start": "es-dev-server --app-index /demo/index.html --node-resolve --watch --open"
   }
 }

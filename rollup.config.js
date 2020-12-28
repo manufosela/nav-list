@@ -1,16 +1,18 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
+import { terser } from 'rollup-plugin-terser';
 
 export default {
   preserveSymlinks: true,
-	input: ['nav-list.js'],
-	output: {
-		file: 'build/nav-list.js',
+  input: [ 'nav-list.js' ],
+  output: {
+    file: 'dist/nav-list.min.js',
     format: 'es',
-		sourcemap: true
-	},
-	plugins: [
+    sourcemap: true
+  },
+  plugins: [
     resolve(),
-    babel()
+    babel(),
+    terser()
   ]
 };

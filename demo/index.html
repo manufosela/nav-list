@@ -100,14 +100,43 @@
       <nav-list></nav-list>
       <hr>
       <h3>nav-list demo2: With attributes and fixed</h3>
-      <nav-list title="NavList 2" value="page3" list="page1,page2,page3,page4,page5" fixed="true"></nav-list>
+      <nav-list title="NavList 2" selected="page3" fixed="true">
+        <ul>
+          <li>page1</li>
+          <li>page2</li>
+          <li>page3</li>
+          <li>page4</li>
+          <li>page5</li>
+        </ul>
+      </nav-list>
+      
       <hr>
+      
       <h3>nav-list demo3: With attributes </h3>
       <p>Element list value: <span id="yourNavlistValue"></span></p>
-      <nav-list id="demo3" title="NavList 3" value="5&ndash;10" list="&lt;3,3&ndash;5,5&ndash;10,&gt;10"></nav-list>
+      <nav-list id="demo3" title="NavList 3" selected="5&ndash;10">
+        <ul>
+          <li>&lt;3</li>
+          <li>3&ndash;5</li>
+          <li>5&ndash;10</li>
+          <li>&gt;10</li>
+        </ul>
+      </nav-list>
+      
       <hr>
+      
       <h3>nav-list demo4: With attributes and fixed and change with event</h3>
-      <nav-list id="demo4" title="NavList 4" value="inicio" list="inicio, fase 1,fase 2,fase 3,fase 4,fase 5,fin" fixed="true" listen-events="true"></nav-list>
+      <nav-list id="demo4" title="NavList 4" selected="inicio" fixed="true" listen-events="true">
+        <ul>
+          <li>inicio</li>
+          <li>fase 1</li>
+          <li>fase 2</li>
+          <li>fase 3</li>
+          <li>fase 4</li>
+          <li>fase 5</li>
+          <li>fin</li>
+        </ul>
+      </nav-list>
       <br>
       <button onclick="goto('last')"><-last</button><button onclick="goto('next')">next-></button> 
       <br>

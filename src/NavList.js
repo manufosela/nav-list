@@ -14,9 +14,8 @@ import { NavListStyles } from "./nav-list-style";
 export class NavList extends LitElement {
   static get properties() {
     return {
-      list: { type: String },
       listValues: { type: Array },
-      value: { type: String },
+      selected: { type: String },
       title: { type: String },
       fixed: { type: Boolean },
       listenEvents: { type: Boolean, attribute: 'listen-events' },
@@ -46,9 +45,8 @@ export class NavList extends LitElement {
 
   constructor() {
     super();
-    this.list = '0,1,2,3,4,5';
-    this.listValues = this.list.split(',');
-    this.value = null;
+    this.listValues = [1,2,3,4,5];
+    this.selected = null;
     this.title = 'TITLE';
     this.fixed = false;
     this.listenEvents = false;
@@ -56,23 +54,30 @@ export class NavList extends LitElement {
   }
 
   _getNextVal() {
-    const pos = this.listValues.indexOf(this.value);
+    const pos = this.listValues.indexOf(this.selected);
     if (pos < this.listValues.length - 1) {
-      this.value = this.listValues[pos + 1];
+      this.selected = this.listValues[pos + 1];
     }
   }
 
   _getLastVal() {
-    const pos = this.listValues.indexOf(this.value);
+    const pos = this.listValues.indexOf(this.selected);
     if (pos > 0) {
-      this.value = this.listValues[pos - 1];
+      this.selected = this.listValues[pos - 1];
     }
+  }
+
+  _getLightDomElements() {
+    const liElements = [...this.querySelectorAll('ul > li')];
+    return (liElements.length > 0) ? liElements.map((li) => {
+      return li.textContent;
+    }) : this.listValues;
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.cursorPointer = !this.fixed;
-    this.listValues = this.list.split(',');
+    this.listValues = this._getLightDomElements();
     if (this.listenEvents) {
       this.cursorPointer = false;
       document.addEventListener('navlist-next', (ev) => {
@@ -97,15 +102,15 @@ export class NavList extends LitElement {
   }
 
   updated() {
-    if (this.value) {
-      this.shadowRoot.querySelector('[id=\'navlist-item__' + this.value + '\']').checked = true;
+    if (this.selected) {
+      this.shadowRoot.querySelector('[id=\'navlist-item__' + this.selected + '\']').checked = true;
     }
   }
 
   _setValue(val) {
-    this.value = val;
+    this.selected = val;
     const id = (this.id) ? this.id : 'no-id';
-    const changeValEvent = new CustomEvent('navlist-changed', { 'detail': { 'value': this.value, 'pos': this.listValues.indexOf(this.value), id: id}});
+    const changeValEvent = new CustomEvent('navlist-changed', { 'detail': { 'value': this.selected, 'pos': this.listValues.indexOf(this.selected), id: id}});
     document.dispatchEvent(changeValEvent);
   }
 

@@ -1,13 +1,10 @@
 # \<nav-list\> [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@manufosela/nav-list) [![Published on npmjs.com](https://img.shields.io/badge/npmjs-package-orange)](https://www.npmjs.com/package/@manufosela/nav-list) [![License: Apache-2.0](https://img.shields.io/badge/license-apache2.0-green)](https://www.apache.org/licenses/LICENSE-2.0)
 
 
-/aur/license/:packageName
-
-Lit-Element webcomponent to draw a horizontal navigation list
-
+@manufosela/nav-list is a Lit-Element webcomponent to draw a horizontal navigation list
 
 ## Demo
-[nav-list codepen demo](https://codepen.io/manufosela/pen/NmzdZo)
+[nav-list codepen demo](https://codepen.io/manufosela/pen/MWjrrEW)
 
 
 <!--
@@ -26,17 +23,31 @@ Lit-Element webcomponent to draw a horizontal navigation list
 <nav-list></nav-list>
 
 <h3>With attributes nav-list demo</h3>
-<nav-list value="7" list="5,6,7,8,9,10"></nav-list>
+<nav-list selected="7">
+  <ul>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+  </ul>
+</nav-list>
 
 <h3>With attributes nav-list demo</h3>
-<nav-list value="5&ndash;10" list="&lt;3,3&ndash;5,5&ndash;10,&gt;10"></nav-list>
+<nav-list selected="5&ndash;10">
+  <ul>
+    <li>&lt;3</li>
+    <li>3&ndash;5</li>
+    <li>5&ndash;10</li>
+    <li>&gt;10</li>
+  </ul>
+</nav-list>
 ```
 
 ## Attributes
 ```code
-list (separated comma list)
 [title] (String)
-[value] (String)
+[selected] (String)
 [fixed] (Boolean) (false by default)
 [listen-events] (Boolean) (false by default)
 ```
@@ -45,6 +56,8 @@ list (separated comma list)
 ```code
 navlist-last
 navlist-next
+
+(detail.id is mandatory)
 ```
 
 ## Dispatch Events
@@ -54,14 +67,25 @@ navlist-changed (when new value is set)
 
 ## CSS vars
 ```css
---width-list-element (default: auto)
---height-list-element (default: auto)
---border-radius-element (default: 10px)
+    --width-list-element: auto;
+    --height-list-element: auto;
+    --border-radius-element: 0;
+    --border-radius-selected-element: 0;
+    --border-top-list-element: 2px solid transparent;
+    --border-bottom-list-element: 2px solid transparent;
+    --border-left-list-element: 2px solid transparent;
+    --border-right-list-element: 2px solid transparent;
+    --border-top-selected-element: 2px solid #cc3743;
+    --border-bottom-selected-element: 2px solid #cc3743;
+    --border-left-selected-element: 2px solid #cc3743;
+    --border-right-selected-element: 2px solid #cc3743;
+    --padding-list-element: 10px 20px;
+    --padding-selected-element: 10px 13px;
 ```
 
-## Install the Polymer-CLI
+## Install
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) and npm (packaged with [Node.js](https://nodejs.org)) installed. Run `npm install` to install your element's dependencies, then run `polymer serve` to serve your element locally.
+First run `npm install` to install your element's dependencies.
 
 ## Viewing Your Element
 
@@ -84,7 +108,7 @@ Your application is already set up to be tested via [web-component-tester](https
 
 ## Author
 
-* **Mánu Fosela** - *Javascript Composer* - [manufosela](https://github.com/manufosela)
+* **Mánu Fosela** - *Web Developer* - [manufosela](https://github.com/manufosela)
 
 ## License
 

@@ -51,19 +51,28 @@ export class NavList extends LitElement {
     this.fixed = false;
     this.listenEvents = false;
     this.cursorPointer = true;
+
+    this._getNextVal = this._getNextVal.bind(this);
+    this._getLastVal = this._getLastVal.bind(this);
   }
 
-  _getNextVal() {
-    const pos = this.listValues.indexOf(this.selected);
-    if (pos < this.listValues.length - 1) {
-      this.selected = this.listValues[pos + 1];
+  _getNextVal(ev) {
+    const id = ev.detail.id;
+    if (this.id === id) {
+      const pos = this.listValues.indexOf(this.selected);
+      if (pos < this.listValues.length - 1) {
+        this.selected = this.listValues[pos + 1];
+      }
     }
   }
 
-  _getLastVal() {
-    const pos = this.listValues.indexOf(this.selected);
-    if (pos > 0) {
-      this.selected = this.listValues[pos - 1];
+  _getLastVal(ev) {
+    const id = ev.detail.id;
+    if (this.id === id) {
+      const pos = this.listValues.indexOf(this.selected);
+      if (pos > 0) {
+        this.selected = this.listValues[pos - 1];
+      }
     }
   }
 
@@ -80,12 +89,8 @@ export class NavList extends LitElement {
     this.listValues = this._getLightDomElements();
     if (this.listenEvents) {
       this.cursorPointer = false;
-      document.addEventListener('navlist-next', (ev) => {
-        this._getNextVal();
-      });
-      document.addEventListener('navlist-last', (ev) => {
-        this._getLastVal();
-      });
+      document.addEventListener('navlist-next', this._getNextVal);
+      document.addEventListener('navlist-last', this._getLastVal);
     }
   }
 

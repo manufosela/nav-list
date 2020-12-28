@@ -148,13 +148,14 @@
             document.querySelector("#yourNavlistValue").innerText = detail.value;
           }
         });
-        const lastValEvent = new CustomEvent('navlist-last');
-        const nextValEvent = new CustomEvent('navlist-next');
+        
         function goto(dir) {
           if (dir === 'last') {
+            const lastValEvent = new CustomEvent('navlist-last', {detail:{id:'demo4'}});
             document.dispatchEvent(lastValEvent);
           }
           if (dir === 'next') {
+            const nextValEvent = new CustomEvent('navlist-next', {detail:{id:'demo4'}});
             document.dispatchEvent(nextValEvent);
           }
         }

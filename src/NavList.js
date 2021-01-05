@@ -106,6 +106,11 @@ export class NavList extends LitElement {
     }
   }
 
+  firstUpdated() {
+    const mainLayer = this.shadowRoot.getElementById('main');
+    mainLayer.classList.add('fadein');
+  }
+
   updated() {
     if (this.selected) {
       this.shadowRoot.querySelector('[id=\'navlist-item__' + this.selected + '\']').checked = true;
@@ -139,7 +144,7 @@ export class NavList extends LitElement {
 
   render() {
     return html`
-      <div class="navlist-labels">
+      <div id="main" class="navlist-labels off">
         <div class="navlist-labels__title">${this.title}</div>
         <div class="navlist-labels__group">
           ${this._getListValues()}

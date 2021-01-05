@@ -51,6 +51,9 @@
         --padding-list-element:10px 20px 0 20px;
         --padding-selected-element:10px 20px 0 20px;
       }
+      .off {
+        opacity:0;
+      }
     </style>
   </head>
   <body>
@@ -97,11 +100,11 @@
     </div>
     <div class="vertical-section-container centered">
       <h3>nav-list demo: Default</h3>
-      <nav-list></nav-list>
+      <nav-list style="opacity:0"></nav-list>
       <hr>
       <h3>nav-list demo2: With attributes and fixed</h3>
       <nav-list title="NavList 2" selected="page3" fixed="true">
-        <ul>
+        <ul class="off">
           <li>page1</li>
           <li>page2</li>
           <li>page3</li>
@@ -114,8 +117,8 @@
       
       <h3>nav-list demo3: With attributes </h3>
       <p>Element list value: <span id="yourNavlistValue"></span></p>
-      <nav-list id="demo3" title="NavList 3" selected="5&ndash;10">
-        <ul>
+      <nav-list id="demo3" title="NavList 3" selected="5&ndash;10" style="opacity:0">
+        <ul class="off">
           <li>&lt;3</li>
           <li>3&ndash;5</li>
           <li>5&ndash;10</li>
@@ -126,8 +129,8 @@
       <hr>
       
       <h3>nav-list demo4: With attributes and fixed and change with event</h3>
-      <nav-list id="demo4" title="NavList 4" selected="inicio" fixed="true" listen-events="true">
-        <ul>
+      <nav-list id="demo4" title="NavList 4" selected="inicio" fixed="true" listen-events="true" style="opacity:0">
+        <ul class="off">
           <li>inicio</li>
           <li>fase 1</li>
           <li>fase 2</li>
